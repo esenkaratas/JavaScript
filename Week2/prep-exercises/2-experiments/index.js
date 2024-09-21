@@ -2,25 +2,33 @@
 
 function runExperiment(sampleSize) {
   const valueCounts = [0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < sampleSize; i++) {
+    const randomNumber = Math.floor(Math.random() * 6);
+    valueCounts[randomNumber] += 1;
+  }
 
   // TODO
   // Write a for loop that iterates `sampleSize` times (sampleSize is a number).
   // In each loop iteration:
   //
-  // 1. Generate a random integer between 1 and 6 (as if throwing a six-sided die).
+  // 1. Generate a random integer between 1 and 6 (as if throwing a six-sided dice).
   // 2. Add `1` to the element of the `valueCount` that corresponds to the random
   //    value from the previous step. Use the first element of `valueCounts`
   //    for keeping a count how many times the value 1 is thrown, the second
   //    element for value 2, etc.
 
   const results = [];
+  for (const element of valueCounts) {
+    const percentage = 100 * element / sampleSize;
+    results.push(percentage.toFixed(2));
+  }
 
   // TODO
   // Write a for..of loop for the `valueCounts` array created in the previous
   // loop. In each loop iteration:
-  // 1. For each possible value of the die (1-6), compute the percentage of how
+  // 1. For each possible value of the dice (1-6), compute the percentage of how
   //    many times that value was thrown. Remember that the first value of
-  //    `valueCounts` represent the die value of 1, etc.
+  //    `valueCounts` represent the dice value of 1, etc.
   // 2. Convert the computed percentage to a number string with a precision of
   //    two decimals, e.g. '14.60'.
   // 3. Then push that string onto the `results` array.
@@ -30,6 +38,10 @@ function runExperiment(sampleSize) {
 
 function main() {
   const sampleSizes = [100, 1000, 1000000];
+  for (const element of sampleSizes) {
+    console.log(runExperiment(element), element);
+    
+  }
 
   // TODO
   // Write a for..of loop that calls the `runExperiment()` function for each
